@@ -167,6 +167,8 @@ my-node-server
     - Screen.js
     - Sg.js
     - Phen.js
+    - BaseModel.test.js
+    - models.test.js
 - genome.db
 - server.js
 - searchArg.js
