@@ -66,7 +66,7 @@ async function handleSearch(
         console.log('API Response:', associatedData);
 
         if (associatedResponse.ok) {
-            handleApiResponse(associatedData, sgPage !== currentSgPage); // Pass a flag indicating if only sg page is changing
+            handleApiResponse(associatedData, sgPage !== currentSgPage);
             return associatedData; // Return the data for use in pagination updates
         } else {
             alert(associatedData.error || 'Error fetching associated data');
@@ -77,7 +77,7 @@ async function handleSearch(
     }
 }
 
-// Ensure display functions process both sg and screen data
+// Function to handle the API response
 function handleApiResponse(response) {
     const { genes, totalSgCount, sgs, screens } = response;
 
@@ -97,14 +97,15 @@ function handleApiResponse(response) {
 
 
 
-// Function to create a table cell
+
+// Utility function to create a table cell
 function createTableCell(content) {
     const cell = document.createElement('td');
     cell.textContent = content;
     return cell;
 }
 
-// Function to create a table row
+// Utility function to create a table row
 function createTableRow(data, columns) {
     const row = document.createElement('tr');
     columns.forEach(col => {
@@ -166,9 +167,7 @@ function updatePaginationControls(type, currentPage, totalCount, limit, updateFu
 
 
 
-
-
-// Function to display gene data
+// Function to display gene data, including all associated ENSG IDs
 function displayGeneData(genes) {
     if (!genes || !Array.isArray(genes) || genes.length === 0) {
         console.error('Gene data is missing or incorrect:', genes);
@@ -245,8 +244,7 @@ function updateSgPage(newPage) {
 }
 
 
-
-
+// TABLES
 // Function to display screens
 function displayScreens(screens) {
     const resultsBody = document.getElementById('results-body');
@@ -260,9 +258,6 @@ function displayScreens(screens) {
         resultsBody.appendChild(row);
     });
 }
-
-
-
 
 
 // Function to display sgRNAs with pagination
@@ -400,12 +395,7 @@ function showModal(phen) {
 
 
 
-
-
-
-
-
-
+// PLOT
 // Function to show the modal with plot
 function showModalWithPlot(sgId, sequence) {
     const modal = document.getElementById('info-modal');
@@ -529,7 +519,7 @@ document.querySelector('.close').addEventListener('click', function() {
 });
 
 
-
+// Sorting and filtering
 // Function to get the value of an input field
 function getInputValue(id) {
     return document.getElementById(id).value.toLowerCase().trim();
@@ -541,26 +531,24 @@ document.addEventListener('DOMContentLoaded', () => {
         screen: { pubmed: 'asc', screentype: 'asc', condition: 'asc', cas: 'asc', cellline: 'asc' },
     };
 
-
-    
     // Function to trigger a new search with sorting
 function triggerSort(type, column) {
     const order = sortOrder[type][column];
-    console.log(`Triggering sort for ${type} by ${column} in ${order} order`); // For debugging
-
+    console.log(`Triggering sort for ${type} by ${column} in ${order} order`);
     if (type === 'sg') {
         currentSgSortBy = column;
         currentSgSortOrder = order;
         
+        // Call handleSearch with the updated sort parameters, toggling the order
         handleSearch(
             currentSgPage,
             currentSgLimit,
-            currentSgSortBy,  // Use the global state
-            currentSgSortOrder, // Use the global state
+            currentSgSortBy,  
+            currentSgSortOrder, 
             currentScreenSortBy,
             currentScreenSortOrder
         ).then(() => {
-            sortOrder[type][column] = order === 'asc' ? 'desc' : 'asc';  // Toggle sort order
+            sortOrder[type][column] = order === 'asc' ? 'desc' : 'asc';
         });
     } else if (type === 'screen') {
         currentScreenSortBy = column;
@@ -571,10 +559,10 @@ function triggerSort(type, column) {
             currentSgLimit,
             currentSgSortBy,
             currentSgSortOrder,
-            currentScreenSortBy,  // Use the global state
-            currentScreenSortOrder // Use the global state
+            currentScreenSortBy, 
+            currentScreenSortOrder 
         ).then(() => {
-            sortOrder[type][column] = order === 'asc' ? 'desc' : 'asc';  // Toggle sort order
+            sortOrder[type][column] = order === 'asc' ? 'desc' : 'asc';
         });
     }
 }
@@ -582,7 +570,7 @@ function triggerSort(type, column) {
     
     
     
-
+// SEARCHING
 // Debounce function to prevent multiple triggers
 function debounceSearch(callback, delay = 300) {
     let debounceTimeout;
@@ -608,7 +596,6 @@ function triggerSearch() {
             console.error('Error during search:', error);
         });
 }
-
 
 
     // Event listeners for sorting
