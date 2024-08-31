@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character set and viewport configuration -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title of the page -->
+    <title>Scientific Data Warehouse - GenomeCRISPR</title>
+
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Importing Chart.js library for plotting data -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+
+        <!-- Header with the title and logo -->
+        <h1>Scientific Data Warehouse - GenomeCRISPR</h1>
+        <img src="/images/bingen.png" alt="TH Bingen Logo" class="logo" />
+    </header>
+
+    <main>
+        <!-- Section for the search input and button -->
+        <section id="search">
+            <h2>Search by Gene Symbol or ENSEMBL Identifier</h2>
+            <input type="text" id="search-input" placeholder="e.g. A1CF, ENSG00000148584...">
+            <button id="search-button">Search</button>
+        </section>
+
+        <!-- Section for displaying the search results -->
+        <section id="results">
+            <h2>Search Results</h2>
+            <div id="search-results">
+
+                <!-- Placeholder for gene header after search-->
+                <h3 id="gene-header"></h3>
+        
+                <!-- Subsection for screen results-->
+                <h4>Screens</h4>
+                <div class="table-container">
+                    <table id="results-table" border="1">
+                        <thead>
+                            <tr>
+
+                                <!-- Table header with search inputs-->
+                                <th>
+                                    PubMed
+                                    <input type="text" id="search-pubmed" class="header-search-input" placeholder="Search">
+                                </th>
+                                <th>
+                                    Screen type
+                                    <input type="text" id="search-screentype" class="header-search-input" placeholder="Search">
+                                </th>
+                                <th>
+                                    Condition
+                                    <input type="text" id="search-condition" class="header-search-input" placeholder="Search">
+                                </th>
+                                <th>
+                                    Cas
+                                    <input type="text" id="search-cas" class="header-search-input" placeholder="Search">
+                                </th>
+                                <th>
+                                    Cellline
+                                    <input type="text" id="search-cellline" class="header-search-input" placeholder="Search">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body">
+                            <!-- Placeholder for search results -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Subsection for sg results -->
+                <h4>sgRNAs</h4>
+                <div class="table-container">
+                    <table id="sg-results-table" border="1">
+                        <thead>
+                            <tr>
+
+                                <!-- Table header with search inputs for sequence and effect-->
+                                <th>Location</th>
+                                <th>
+                                    Sequence
+                                    <button data-sort-sg="sequence" class="sort-button" data-order="asc">▲</button>
+                                    <button data-sort-sg="sequence" class="sort-button" data-order="desc">▼</button>
+                                    <input type="text" class="header-search-input" id="search-sequence" placeholder="Search">
+                                </th>
+                                <th>PAM</th>
+                                <th>
+                                    Effect
+                                    <button data-sort-sg="effect" class="sort-button" data-order="asc">▲</button>
+                                    <button data-sort-sg="effect" class="sort-button" data-order="desc">▼</button>
+                                    <input type="text" class="header-search-input" id="search-effect" placeholder="Search">
+                                </th>
+                                <th>Screens</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sg-results-body">
+                            <!-- Placeholder for sg results -->
+                        </tbody>
+                    </table>
+
+                    <!-- Dropdown for selecting results per page -->
+                    <div class="results-per-page">
+                        <label for="sg-results-per-page">Results per page:</label>
+                        <select id="sg-results-per-page">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+
+                    <!-- Pagination controls -->
+                    <div id="sg-pagination" class="pagination-controls">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for displaying extra information -->
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <div id="modal-content">
+
+                <!-- Container for displaying the plot within the modal-->
+                <canvas id="plot-container" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

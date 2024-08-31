@@ -1,0 +1,364 @@
+/* Global styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0e0e0;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    color: rgba(0,87,149,255);
+}
+
+header h1 {
+    font-size: 34px;
+    margin: 0;
+    color: rgba(0,87,149,255);
+}
+
+header img.logo {
+    height: 50px;
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* Search section styling */
+#search {
+    margin-bottom: 20px;
+}
+
+#search input, #search button {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#search button {
+    background-color: rgba(0,87,149,255);
+    color: white;
+    border: none;
+}
+
+#search button:hover {
+    background-color: rgba(0,87,149,180);
+}
+
+/* Search filters styling */
+.search-filters {
+    margin-bottom: 10px;
+}
+
+.search-filters label {
+    margin-right: 5px;
+}
+
+.search-filters input {
+    margin-right: 15px;
+    padding: 5px;
+}
+
+/* Results section styling */
+#results {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#results h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Table title style */
+.table-title {
+    color: rgba(0,87,149,255);
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Table styling */
+#results-table, #sg-results-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+#results-table th, #sg-results-table th {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    white-space: nowrap;
+}
+
+#results-table td, #sg-results-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    min-width: 100px;
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Zebra striping for tables */
+#results-table tr:nth-child(even) td,
+#sg-results-table tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+#results-table tr:hover td,
+#sg-results-table tr:hover td {
+    background-color: #f1f1f1;
+}
+
+/* Clickable effect cell styling */
+.effect-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    background-color: inherit;
+    border: 1px solid #d3d3d3;
+}
+
+.effect-clickable {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: inherit;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    min-width: 70px;
+    font-size: 12px;
+    border: 1px solid #d3d3d3;
+}
+
+.effect-clickable:hover {
+    color: rgba(0,87,149,255);
+    background-color: #e0e0e0;
+}
+
+/* Clickable 'Details' link styling in sg screens column */
+.detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-clickable {
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    display: inline-block;
+    min-width: 70px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-size: 12px;
+    border: 1px solid #d3d3d3;
+}
+
+.detail-clickable:hover {
+    color: rgba(0,87,149,255);
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80%;
+    border-radius: 5px;
+    position: relative;
+    overflow-y: auto;
+}
+
+/* Close button styling */
+.close {
+    color: rgba(0,87,149,255);
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: rgba(0,87,149,180);
+    text-decoration: none;
+}
+
+/* Table and controls container styling */
+.table-container {
+    position: relative;
+    padding-bottom: 60px;
+}
+
+.results-per-page {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    background: #ffffff;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.results-per-page label {
+    font-size: 14px;
+}
+
+.results-per-page:hover {
+    background-color: #e0e0e0;
+}
+
+/* Pagination controls styling */
+#screen-pagination, #sg-pagination, .pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#screen-pagination, #sg-pagination {
+    justify-content: flex-start;
+}
+
+.pagination-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    justify-content: center;
+}
+
+#screen-pagination button, #sg-pagination button, .pagination-controls button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    color: #333;
+    cursor: pointer;
+}
+
+#screen-pagination button:hover, #sg-pagination button:hover, .pagination-controls button:hover {
+    background-color: #e0e0e0;
+}
+
+#screen-pagination button.active, #sg-pagination button.active, .pagination-controls button.active {
+    background-color: rgba(0, 87, 149, 1);
+    color: white;
+}
+
+.pagination-controls button.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Additional styling for page info */
+#screen-pagination span, #sg-pagination span {
+    margin-right: 5px;
+}
+
+/* Improved button styles */
+button {
+    font-family: Arial, sans-serif;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:focus {
+    outline: 2px solid rgba(0,87,149,255);
+}
+
+/* Sorting button styles */
+th.sortable {
+    cursor: pointer;
+}
+
+th.sortable::after {
+    content: ' ▲';
+}
+
+th.sortable.desc::after {
+    content: ' ▼';
+}
+
+.sort-button {
+    background: none;
+    border: none;
+    color: #868686;
+    cursor: pointer;
+    float: right;
+}
+
+.header-search-input {
+    float: right;
+}
+
+/* Gene-header grid layout styling */
+#gene-header div {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 40px;
+}
+
+#gene-header h2 {
+    font-size: 24px;
+    margin-right: 40px;
+    color: rgba(0,87,149,255);
+    text-decoration: solid;
+}
+
+#gene-header ul {
+    font-size: 14px;
+    margin: 0;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+#gene-header div > div {
+    display: grid;
+    gap: 20px;
+}
