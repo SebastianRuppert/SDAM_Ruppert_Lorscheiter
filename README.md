@@ -150,8 +150,6 @@ This project is part of the Scientific Data Management (SDAM) module. NOTE: This
   - The GUI includes several utility functions to manage table creation, pagination, and data fetching, such as `createTableRow`, `createPaginationButton`, `fetchPhenData`, and `getUniqueSgs`.
   - **Debouncing**: A debounce function is implemented to prevent multiple triggers during user input, ensuring efficient search and display updates.
 
-### User Experience
-
 - **Real-time Interaction**: Users can perform searches, sort data, and view detailed information with minimal delays, thanks to efficient data handling and asynchronous JavaScript functions.
 - **Error Handling**: The GUI provides user-friendly error messages and alerts in case of failed data retrievals or invalid inputs.
 
